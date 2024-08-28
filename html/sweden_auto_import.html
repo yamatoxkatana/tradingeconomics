@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweden Data Overview</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #212a35;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Sweden Auto Imports Data Overview</h1>
+    <a href="https://api.tradingeconomics.com/country/sweden?c=guest:guest&category=Auto+Exports">Source Link</a>
+
+    <h2>Asylum Applications</h2>
+    <table border="1">
+        <tr>
+            <th>Country</th>
+            <th>Category</th>
+            <th>Latest Value Date</th>
+            <th>Latest Value</th>
+            <th>Source</th>
+            <th>Unit</th>
+            <th>Previous Value</th>
+            <th>Previous Value Date</th>
+        </tr>
+        <tr>
+            <td>Sweden</td>
+            <td>Asylum Applications</td>
+            <td>2024-06-30</td>
+            <td>485</td>
+            <td><a href="https://ec.europa.eu/eurostat/">EUROSTAT</a></td>
+            <td>persons</td>
+            <td>545</td>
+            <td>2024-05-31</td>
+        </tr>
+    </table>
+
+    <h2>Average Weekly Hours</h2>
+    <table border="1">
+        <tr>
+            <th>Country</th>
+            <th>Category</th>
+            <th>Latest Value Date</th>
+            <th>Latest Value</th>
+            <th>Source</th>
+            <th>Unit</th>
+            <th>Previous Value</th>
+            <th>Previous Value Date</th>
+        </tr>
+        <tr>
+            <td>Sweden</td>
+            <td>Average Weekly Hours</td>
+            <td>2024-07-31</td>
+            <td>18</td>
+            <td><a href="https://www.scb.se/">Statistics Sweden</a></td>
+            <td>Hours</td>
+            <td>29.4</td>
+            <td>2024-06-30</td>
+        </tr>
+    </table>
+
+    <h2>Balance of Trade</h2>
+    <table border="1">
+        <tr>
+            <th>Country</th>
+            <th>Category</th>
+            <th>Latest Value Date</th>
+            <th>Latest Value</th>
+            <th>Source</th>
+            <th>Unit</th>
+            <th>Previous Value</th>
+            <th>Previous Value Date</th>
+        </tr>
+        <tr>
+            <td>Sweden</td>
+            <td>Balance of Trade</td>
+            <td>2024-07-31</td>
+            <td>6500</td>
+            <td><a href="https://www.scb.se/">Statistics Sweden</a></td>
+            <td>SEK Million</td>
+            <td>8100</td>
+            <td>2024-06-30</td>
+        </tr>
+    </table>
+
+    <h2>Time Series Visualization</h2>
+    <canvas id="timeSeriesChart" width="400" height="200"></canvas>
+    <script>
+        const ctx = document.getElementById('timeSeriesChart').getContext('2d');
+        const timeSeriesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2024-05-31', '2024-06-30', '2024-07-31'],
+                datasets: [{
+                    label: 'Sweden Asylum Applications',
+                    data: [545, 485, null],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: 'Sweden Average Weekly Hours',
+                    data: [null, 29.4, 18],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: 'Sweden Balance of Trade',
+                    data: [8100, 6500, null],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sweden Data Overview'
+                    },
+                    legend: {
+                        labels: {
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
